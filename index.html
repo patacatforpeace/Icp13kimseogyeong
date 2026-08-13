@@ -106,6 +106,7 @@
     margin:0; background:var(--bg); color:var(--ink);
     font-family:var(--font-sans); font-size:14px; line-height:1.5;
     -webkit-font-smoothing:antialiased;
+    word-break: keep-all; overflow-wrap: break-word;
   }
   button, input, select, textarea{ font-family:inherit; font-size:inherit; color:inherit; }
   button{ cursor:pointer; }
@@ -316,7 +317,7 @@
 
   .field{ display:flex; flex-direction:column; gap:5px; }
   .field label{ font-size:12px; font-weight:700; color:var(--ink-2); }
-  .field input, .field select{ padding:8px 10px; border-radius:7px; border:1px solid var(--border-strong); background:var(--bg); width:100%; }
+  .field input, .field select{ padding:8px 10px; border-radius:7px; border:1px solid var(--border-strong); background:var(--bg); width:100%; font-size:16px; }
   .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .field-row-3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
 
