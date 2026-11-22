@@ -1,0 +1,80 @@
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  VOICE   calm, factual, never scolding — a personal operations board
+  IDEA    a well-kept ledger: ruled cards, tabular figures, one ink colour
+  PICTURE the live numbers themselves (weight, debt, streak grids)
+  COLOUR  near-black ink on #F7F8FA, slate accent, status colours only for state
+  TYPE    Inter for figures, Pretendard for Hangul; tabular numerals everywhere
+*/
+:root {
+  --bg: 247 248 250;
+  --surface: 255 255 255;
+  --subtle: 243 244 246;
+  --ink: 23 23 23;
+  --muted: 115 115 115;
+  --line: 229 231 235;
+  --accent: 100 116 139;
+  --success: 22 163 74;
+  --warning: 217 119 6;
+  --danger: 220 38 38;
+  color-scheme: light;
+}
+.dark {
+  --bg: 14 15 17;
+  --surface: 24 25 28;
+  --subtle: 33 35 39;
+  --ink: 240 240 240;
+  --muted: 160 163 170;
+  --line: 45 48 54;
+  --accent: 148 163 184;
+  --success: 74 222 128;
+  --warning: 251 191 36;
+  --danger: 248 113 113;
+  color-scheme: dark;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  @apply bg-bg text-ink antialiased;
+  font-family: Inter, 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'tnum' 1, 'cv11' 1;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.num { font-variant-numeric: tabular-nums; }
+input, select, textarea, button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid rgb(var(--ink)); outline-offset: 2px; border-radius: 6px; }
+
+@layer components {
+  .card { @apply rounded-card border border-line bg-surface; min-width: 0; }
+  .tbl .num, .tbl th { white-space: nowrap; }
+  .input {
+    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-base text-ink placeholder:text-muted/70
+      focus:border-ink focus:outline-none sm:text-sm;
+    min-height: 42px;
+  }
+  .label { @apply mb-1 block text-xs font-medium text-muted; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3.5 text-sm font-medium transition-colors
+      disabled:cursor-not-allowed disabled:opacity-40;
+    min-height: 40px;
+  }
+  .btn-primary { @apply bg-ink text-surface hover:opacity-90; }
+  .btn-secondary { @apply border border-line bg-surface text-ink hover:bg-subtle; }
+  .btn-ghost { @apply text-muted hover:bg-subtle hover:text-ink; }
+  .btn-danger { @apply border border-danger/30 bg-surface text-danger hover:bg-danger/10; }
+  .btn-icon { @apply inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted hover:bg-subtle hover:text-ink; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full border border-line px-2 py-0.5 text-xs text-muted; }
+  .tbl { @apply w-full text-sm; }
+  .tbl th { @apply border-b border-line px-3 py-2 text-left text-xs font-medium text-muted; }
+  .tbl td { @apply border-b border-line px-3 py-2.5 align-middle; }
+  .tbl tr:last-child td { @apply border-b-0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
